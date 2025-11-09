@@ -25,37 +25,18 @@ export default {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
       },
-
       borderRadius: {
         DEFAULT: 'var(--radius, 12px)',
         xl: 'var(--radius-xl, 12px)',
         '2xl': 'var(--radius-2xl, 16px)',
       },
-
-      // 👇 добавляем сюда анимации
       keyframes: {
-        'fade-in': {
-          from: { opacity: '0' },
-          to: { opacity: '1' },
-        },
-        'slide-up': {
-          '0%': { opacity: '0', transform: 'translateY(12px) scale(0.98)' },
-          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
-        },
-        'scale-in': {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
-        },
-        'rotate-in': {
-          '0%': { opacity: '0', transform: 'rotate(-90deg) scale(0.8)' },
-          '100%': { opacity: '1', transform: 'rotate(0) scale(1)' },
-        },
+        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+        'slide-down': { '0%': { opacity: '0', transform: 'translateY(-8px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
       },
       animation: {
         'fade-in': 'fade-in .35s ease-out both',
-        'slide-up': 'slide-up .45s cubic-bezier(.22,.61,.36,1) both',
-        'scale-in': 'scale-in .35s ease-out both',
-        'rotate-in': 'rotate-in .35s ease-out both',
+        'slide-down': 'slide-down .45s ease-out both',
       },
     },
   },

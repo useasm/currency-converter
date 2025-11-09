@@ -63,3 +63,51 @@
       radial-gradient(1200px 600px at 100% 100%, #e8efff 0%, transparent 60%);
   }
 }
+
+/* Smooth theme switch across the whole app */
+html.theme-transition * {
+  transition:
+    color .35s ease,
+    background-color .35s ease,
+    border-color .35s ease,
+    fill .35s ease,
+    stroke .35s ease,
+    box-shadow .35s ease;
+}
+
+/* Уважать настройку пользователя: без анимаций при Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transition * {
+    transition: none !important;
+  }
+}
+
+/* === Theme ripple overlay (radial wave) === */
+.theme-ripple{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+
+  --x: 50%;
+  --y: 50%;
+  --ripple-color: rgba(0,0,0,.35);
+
+  background: var(--ripple-color);
+  opacity: 0;
+  clip-path: circle(0 at var(--x) var(--y));
+
+  transition:
+    clip-path 600ms ease-out,
+    opacity   300ms ease-out;
+}
+.theme-ripple.active{ opacity: .9; }
+.theme-ripple.expand{ clip-path: circle(150vmax at var(--x) var(--y)); }
+
+@media (prefers-reduced-motion: reduce){
+  .theme-ripple{ transition: none; }
+}
+/* если у пользователя reduce-motion — убираем анимации */
+@media (prefers-reduced-motion: reduce){
+  .theme-ripple{ transition: none; }
+}
