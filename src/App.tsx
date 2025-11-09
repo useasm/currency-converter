@@ -1,45 +1,48 @@
-import { useState, useEffect } from 'react';
-import { CurrencyConverter } from './components/CurrencyConverter.tsx';
-import { Moon, Sun } from 'lucide-react';
-import { Button } from './components/ui/button';
+import { useState, useEffect } from 'react'
+import { CurrencyConverter } from './components/CurrencyConverter'
+import { Moon, Sun } from 'lucide-react'
+import { Button } from './components/ui/button'
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
+    document.documentElement.classList.toggle('dark', isDarkMode)
+  }, [isDarkMode])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-gray-900 dark:text-white">Currency Converter</h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
-              Get real-time exchange rates
-            </p>
+      {/* 👇 ключ на теме заставит main пере-анимироваться */}
+      <main
+        key={isDarkMode ? 'dark' : 'light'}
+        className="mx-auto max-w-4xl px-4 py-8 animate-fade-in"
+      >
+        {/* Header */}
+        <div className="mb-8 flex items-center justify-between animate-slide-up">
+          <div className="animate-scale-in">
+            <h1 className="text-3xl font-bold text-foreground">Currency Converter</h1>
+            <p className="mt-2 text-muted-foreground">Get real-time exchange rates</p>
           </div>
+
           <Button
             variant="outline"
             size="icon"
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className="rounded-full border-gray-300 dark:border-gray-600"
+            onClick={() => setIsDarkMode(v => !v)}
+            className="rounded-full border-border transition-transform duration-300 hover:scale-110 active:scale-95"
+            aria-label="Toggle theme"
           >
-            {isDarkMode ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
+            {/* плавный поворот иконки при смене */}
+            <span className="inline-flex transition-transform duration-300 will-change-transform">
+              {isDarkMode ? <Sun className="h-5 w-5 rotate-180" /> : <Moon className="h-5 w-5 rotate-0" />}
+            </span>
           </Button>
         </div>
-        
-        <CurrencyConverter />
-      </div>
+
+        {/* Основной модуль */}
+        <section className="animate-slide-up">
+          <CurrencyConverter />
+        </section>
+      </main>
     </div>
-  );
+  )
 }

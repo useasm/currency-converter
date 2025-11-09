@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Card } from './ui/card.tsx';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { ArrowDownUp, TrendingUp, RefreshCw } from 'lucide-react';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
+import { useState, useEffect } from 'react'
+import { Card } from './ui/card'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
+import { ArrowDownUp, TrendingUp, RefreshCw } from 'lucide-react'
+import { Button } from './ui/button'
+import { Badge } from './ui/badge'
 
 // Popular currencies
 const currencies = [
@@ -19,99 +19,93 @@ const currencies = [
   { code: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
   { code: 'INR', name: 'Indian Rupee', symbol: '₹' },
   { code: 'MXN', name: 'Mexican Peso', symbol: '$' },
-];
+]
 
-// Mock exchange rates (in a real app, this would come from an API)
-const mockExchangeRates: { [key: string]: number } = {
+// Mock exchange rates (replace with API later)
+const mockExchangeRates: Record<string, number> = {
   USD: 1,
   EUR: 0.92,
   GBP: 0.79,
-  JPY: 149.50,
+  JPY: 149.5,
   AUD: 1.53,
   CAD: 1.36,
   CHF: 0.88,
   CNY: 7.24,
   INR: 83.12,
   MXN: 17.08,
-};
+}
 
 export function CurrencyConverter() {
-  const [amount, setAmount] = useState<string>('100');
-  const [fromCurrency, setFromCurrency] = useState<string>('USD');
-  const [toCurrency, setToCurrency] = useState<string>('EUR');
-  const [convertedAmount, setConvertedAmount] = useState<number>(0);
-  const [exchangeRate, setExchangeRate] = useState<number>(0);
-  const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
-  const [isLoading, setIsLoading] = useState(false);
+  const [amount, setAmount] = useState<string>('100')
+  const [fromCurrency, setFromCurrency] = useState<string>('USD')
+  const [toCurrency, setToCurrency] = useState<string>('EUR')
+  const [convertedAmount, setConvertedAmount] = useState<number>(0)
+  const [exchangeRate, setExchangeRate] = useState<number>(0)
+  const [lastUpdated, setLastUpdated] = useState<Date>(new Date())
+  const [isLoading, setIsLoading] = useState(false)
 
   const calculateConversion = () => {
-    const amountNum = parseFloat(amount) || 0;
-    const fromRate = mockExchangeRates[fromCurrency];
-    const toRate = mockExchangeRates[toCurrency];
-    const rate = toRate / fromRate;
-    
-    setExchangeRate(rate);
-    setConvertedAmount(amountNum * rate);
-  };
+    const amountNum = parseFloat(amount) || 0
+    const fromRate = mockExchangeRates[fromCurrency]
+    const toRate = mockExchangeRates[toCurrency]
+    const rate = toRate / fromRate
+    setExchangeRate(rate)
+    setConvertedAmount(amountNum * rate)
+  }
 
   useEffect(() => {
-    calculateConversion();
-  }, [amount, fromCurrency, toCurrency]);
+    calculateConversion()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [amount, fromCurrency, toCurrency])
 
   const handleSwapCurrencies = () => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
-  };
+    setFromCurrency(toCurrency)
+    setToCurrency(fromCurrency)
+  }
 
   const handleRefreshRates = () => {
-    setIsLoading(true);
-    // Simulate API call
+    setIsLoading(true)
     setTimeout(() => {
-      setLastUpdated(new Date());
-      calculateConversion();
-      setIsLoading(false);
-    }, 500);
-  };
+      setLastUpdated(new Date())
+      calculateConversion()
+      setIsLoading(false)
+    }, 500)
+  }
 
-  const formatCurrency = (value: number, currencyCode: string) => {
-    return new Intl.NumberFormat('en-US', {
+  const formatCurrency = (value: number, currencyCode: string) =>
+    new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: currencyCode,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    }).format(value);
-  };
+    }).format(value)
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <Card className="p-6 shadow-xl dark:bg-gray-800 dark:border-gray-700">
+    <div className="mx-auto max-w-2xl will-change-transform transform-gpu">
+      <Card className="border bg-card p-6 text-card-foreground shadow animate-slide-up motion-safe:[animation-delay:40ms] rounded-[var(--radius)]">
         <div className="space-y-6">
-          {/* From Currency */}
-          <div className="space-y-2">
-            <Label htmlFor="from-amount" className="dark:text-gray-200">
-              Amount
-            </Label>
+
+          {/* From Amount + Currency */}
+          <div className="space-y-2 animate-slide-up motion-safe:[animation-delay:80ms]">
+            <Label htmlFor="from-amount" className="text-foreground">Amount</Label>
             <div className="flex gap-3">
               <Input
                 id="from-amount"
                 type="number"
+                inputMode="decimal"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="flex-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 placeholder="Enter amount"
+                className="flex-1 bg-background text-foreground border-input focus-visible:ring-ring"
               />
               <Select value={fromCurrency} onValueChange={setFromCurrency}>
-                <SelectTrigger className="w-[180px] dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                  <SelectValue />
+                <SelectTrigger className="w-[180px] bg-background text-foreground border-input focus:ring-0">
+                  <SelectValue placeholder="From" />
                 </SelectTrigger>
-                <SelectContent className="dark:bg-gray-700 dark:border-gray-600">
-                  {currencies.map((currency) => (
-                    <SelectItem
-                      key={currency.code}
-                      value={currency.code}
-                      className="dark:text-white dark:focus:bg-gray-600"
-                    >
-                      {currency.code} - {currency.name}
+                <SelectContent className="bg-card text-card-foreground border">
+                  {currencies.map((c) => (
+                    <SelectItem key={c.code} value={c.code} className="focus:bg-muted">
+                      {c.code} — {c.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -119,45 +113,40 @@ export function CurrencyConverter() {
             </div>
           </div>
 
-          {/* Swap Button */}
-          <div className="flex justify-center">
+          {/* Swap */}
+          <div className="flex justify-center animate-scale-in motion-safe:[animation-delay:120ms]">
             <Button
               variant="outline"
               size="icon"
               onClick={handleSwapCurrencies}
-              className="rounded-full dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:bg-gray-600"
+              aria-label="Swap currencies"
+              className="rounded-full border-border transition-all duration-200 hover:scale-110 active:scale-95"
             >
-              <ArrowDownUp className="h-5 w-5" />
+              <ArrowDownUp className="h-5 w-5 transition-transform duration-300 hover:rotate-90" />
             </Button>
           </div>
 
-          {/* To Currency */}
-          <div className="space-y-2">
-            <Label htmlFor="to-currency" className="dark:text-gray-200">
-              Converted Amount
-            </Label>
+          {/* To Amount + Currency */}
+          <div className="space-y-2 animate-slide-up motion-safe:[animation-delay:160ms]">
+            <Label htmlFor="to-amount" className="text-foreground">Converted Amount</Label>
             <div className="flex gap-3">
-              <div className="flex-1 relative">
+              <div className="relative flex-1">
                 <Input
-                  id="to-currency"
+                  id="to-amount"
                   type="text"
                   value={formatCurrency(convertedAmount, toCurrency)}
                   readOnly
-                  className="dark:bg-gray-700 dark:border-gray-600 dark:text-white pr-12"
+                  className="pr-12 bg-background text-foreground border-input"
                 />
               </div>
               <Select value={toCurrency} onValueChange={setToCurrency}>
-                <SelectTrigger className="w-[180px] dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                  <SelectValue />
+                <SelectTrigger className="w-[180px] bg-background text-foreground border-input focus:ring-0">
+                  <SelectValue placeholder="To" />
                 </SelectTrigger>
-                <SelectContent className="dark:bg-gray-700 dark:border-gray-600">
-                  {currencies.map((currency) => (
-                    <SelectItem
-                      key={currency.code}
-                      value={currency.code}
-                      className="dark:text-white dark:focus:bg-gray-600"
-                    >
-                      {currency.code} - {currency.name}
+                <SelectContent className="bg-card text-card-foreground border">
+                  {currencies.map((c) => (
+                    <SelectItem key={c.code} value={c.code} className="focus:bg-muted">
+                      {c.code} — {c.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -165,22 +154,20 @@ export function CurrencyConverter() {
             </div>
           </div>
 
-          {/* Exchange Rate Info */}
-          <div className="bg-blue-50 dark:bg-gray-700 rounded-lg p-4 space-y-3">
+          {/* Rate info */}
+          <div className="rounded-[calc(var(--radius)-4px)] bg-muted/40 p-4 animate-slide-up motion-safe:[animation-delay:200ms]">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-gray-700 dark:text-gray-300">
-                  Exchange Rate
-                </span>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <TrendingUp className="h-4 w-4" />
+                <span>Exchange rate</span>
               </div>
-              <Badge variant="secondary" className="dark:bg-gray-600 dark:text-white">
+              <Badge variant="secondary" className="bg-secondary text-secondary-foreground">
                 1 {fromCurrency} = {exchangeRate.toFixed(4)} {toCurrency}
               </Badge>
             </div>
-            
-            <div className="flex items-center justify-between">
-              <span className="text-gray-600 dark:text-gray-400">
+
+            <div className="mt-3 flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">
                 Last updated: {lastUpdated.toLocaleTimeString()}
               </span>
               <Button
@@ -188,9 +175,9 @@ export function CurrencyConverter() {
                 size="sm"
                 onClick={handleRefreshRates}
                 disabled={isLoading}
-                className="dark:text-gray-300 dark:hover:bg-gray-600"
+                className="text-foreground/80 hover:bg-accent transition-all duration-200"
               >
-                <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+                <RefreshCw className={`mr-2 h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
                 Refresh
               </Button>
             </div>
@@ -198,28 +185,32 @@ export function CurrencyConverter() {
         </div>
       </Card>
 
-      {/* Quick Conversion Reference */}
-      <Card className="mt-6 p-4 dark:bg-gray-800 dark:border-gray-700">
-        <h3 className="mb-3 text-gray-900 dark:text-white">Quick Reference</h3>
+      {/* Quick Reference */}
+      <Card className="mt-6 border bg-card p-4 text-card-foreground shadow animate-slide-up motion-safe:[animation-delay:240ms] rounded-[var(--radius)]">
+        <h3 className="mb-3 font-semibold text-foreground">Quick Reference</h3>
         <div className="grid grid-cols-2 gap-3">
-          {[1, 10, 100, 1000].map((value) => {
-            const converted = value * exchangeRate;
+          {[1, 10, 100, 1000].map((value, idx) => {
+            const converted = value * exchangeRate
             return (
               <div
                 key={value}
-                className="bg-gray-50 dark:bg-gray-700 rounded p-3 text-center"
+                className="rounded-lg bg-background p-3 text-center border border-border animate-slide-up"
+                style={{ animationDelay: `${280 + idx * 40}ms` }} // stagger per card
               >
-                <div className="text-gray-600 dark:text-gray-400">
+                <div className="text-sm text-muted-foreground">
                   {value} {fromCurrency}
                 </div>
-                <div className="text-gray-900 dark:text-white">
+                <div
+                  className="font-medium text-foreground"
+                  key={`${fromCurrency}-${toCurrency}-${value}-${exchangeRate}`} // re-animate when changes
+                >
                   {formatCurrency(converted, toCurrency)}
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </Card>
     </div>
-  );
+  )
 }
