@@ -44,10 +44,8 @@ function FooterBase() {
               Info
             </h3>
             <ul className="space-y-3 text-lg">
-              <li>Information 1</li>
-              <li>Information 2</li>
-              <li>Information 3</li>
-              <li>Information 4</li>
+              <li>made on 09.11.2025</li>
+              <li>create for university</li>
             </ul>
           </div>
 
