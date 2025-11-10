@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# 🌍 Currency Converter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Academic Project**  
+> A modern, responsive web application for real-time currency conversion.  
+> Developed using cutting-edge web technologies: **React**, **TypeScript**, **Vite**, and **Tailwind CSS**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧭 Overview
 
-## React Compiler
+This web application allows users to **convert currencies instantly** using **live exchange rates** fetched from an online API.  
+It supports **theme switching (light/dark)**, **smooth UI interactions**, and **persistent settings** (theme and currency choices remain after reload).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 💱 Real-time currency conversion  
+- 🌙 Light / Dark mode with local storage persistence  
+- ⚡ Fast performance using **Vite** and **React Query**  
+- 🎨 Elegant design with **Tailwind CSS**  
+- 🇷🇺 Multi-currency support (USD, EUR, GBP, RUB, UAH, BGN, and more)  
+- 📱 Fully responsive for desktop and mobile  
+- 🧩 Component-based architecture  
+- 🧠 Clean, maintainable TypeScript code
+<img width="1930" height="1060" alt="asd1" src="https://github.com/user-attachments/assets/c09486ee-57f0-48fb-976a-91fe3237503e" />
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧰 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Category | Technology |
+|-----------|-------------|
+| **Frontend Framework** | [React 18+](https://react.dev/) |
+| **UI Framework** | [Tailwind CSS](https://tailwindcss.com/) |
+| **Desing** | [Figma](https://www.figma.com) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **Build Tool** | [Vite](https://vitejs.dev/) |
+| **Data Fetching** | [TanStack React Query](https://tanstack.com/query/latest) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **State & Theme** | React Hooks + Local Storage |
+| **Version Control** | [Git](https://git-scm.com/) & [GitHub](https://github.com/) |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Installation & Setup
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/useasm/currency-converter.git
+cd currency-converter
