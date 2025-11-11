@@ -50,3 +50,20 @@ It supports **theme switching (light/dark)**, **smooth UI interactions**, and **
 ```bash
 git clone https://github.com/useasm/currency-converter.git
 cd currency-converter
+```
+
+### 2️⃣ Install Dependencies
+```bash
+pnpm install
+# or
+npm install
+# or
+yarn
+```
+
+### 3️⃣ Run the Development Server
+```bash
+pnpm dev
+# or
+npm run dev
+```
