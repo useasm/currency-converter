@@ -67,3 +67,6 @@ pnpm dev
 # or
 npm run dev
 ```
+
+Then open your browser and go to:
+👉 [http://localhost:5173](http://localhost:5173/)
