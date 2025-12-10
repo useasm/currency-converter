@@ -25,7 +25,7 @@ const EXTRA_SYMBOLS: Record<string, string> = {
 
 const POPULAR = ['USD','EUR','GBP','JPY','AUD','CAD','CHF','CNY','INR','MXN','RUB','UAH','BGN'] as const
 
-// ключи для localStorage
+//  localStorage keys
 const LS_AMOUNT = 'cc_amount'
 const LS_FROM   = 'cc_from'
 const LS_TO     = 'cc_to'
@@ -39,7 +39,6 @@ function getFlagEmoji(code: string) {
 }
 
 export function CurrencyConverter() {
-  // ИНИЦИАЛЬНЫЕ ЗНАЧЕНИЯ — ИЗ localStorage
   const [amount, setAmount] = useState<string>(() => localStorage.getItem(LS_AMOUNT) ?? '100')
   const [fromCurrency, setFromCurrency] = useState<string>(() => localStorage.getItem(LS_FROM) ?? 'USD')
   const [toCurrency, setToCurrency] = useState<string>(() => localStorage.getItem(LS_TO) ?? 'EUR')
@@ -47,7 +46,6 @@ export function CurrencyConverter() {
   const [isRefreshing, setIsRefreshing] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  // СИНХРОНИЗАЦИЯ В localStorage
   useEffect(() => { localStorage.setItem(LS_AMOUNT, amount) }, [amount])
   useEffect(() => { localStorage.setItem(LS_FROM, fromCurrency) }, [fromCurrency])
   useEffect(() => { localStorage.setItem(LS_TO, toCurrency) }, [toCurrency])
@@ -95,7 +93,7 @@ export function CurrencyConverter() {
       setLastUpdated(new Date())
     } finally {
       const spent = Date.now() - started
-      const rest = Math.max(0, 400 - spent) // гарантированно видно спин
+      const rest = Math.max(0, 400 - spent) 
       setTimeout(() => setIsRefreshing(false), rest)
     }
   }
@@ -129,7 +127,7 @@ export function CurrencyConverter() {
     <div className="mx-auto max-w-2xl animate-fade-in">
       <Card className="border bg-surface text-card-foreground p-6 shadow-xl rounded-[var(--radius)] backdrop-blur-md">        <div className="space-y-6">
 
-          {/* Amount + From */}
+          {/* amount + from */}
           <div className="space-y-2 animate-slide-down motion-safe:[animation-delay:60ms]">
             <Label htmlFor="amount">Amount</Label>
             <div className="grid grid-cols-2 gap-3">
@@ -184,7 +182,7 @@ export function CurrencyConverter() {
             </div>
           </div>
 
-          {/* Swap */}
+          {/* swap */}
           <div className="flex justify-center animate-fade-in motion-safe:[animation-delay:120ms]">
             <Button
               variant="outline"
@@ -197,7 +195,7 @@ export function CurrencyConverter() {
             </Button>
           </div>
 
-          {/* Converted + To */}
+          {/* converted + to */}
           <div className="space-y-2 animate-slide-down motion-safe:[animation-delay:140ms]">
             <Label htmlFor="to">Converted Amount</Label>
             <div className="relative grid grid-cols-2 gap-3">
@@ -257,7 +255,7 @@ export function CurrencyConverter() {
             </div>
           </div>
 
-          {/* Info */}
+          {/* info */}
           <div className="rounded-[calc(var(--radius)-4px)] bg-muted/40 p-4 animate-fade-in motion-safe:[animation-delay:180ms]">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-muted-foreground">

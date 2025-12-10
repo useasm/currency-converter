@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---- Design tokens (light) ---- */
+/* ---- design tokens (LIGHT) ---- */
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -28,7 +28,7 @@
   --radius-2xl: 16px;
 }
 
-/* ---- Design tokens (dark) ---- */
+/* ---- design tokens (DARK) ---- */
 :root.dark {
   --background: 240 10% 4%;
   --foreground: 0 0% 98%;
@@ -52,11 +52,10 @@
   --radius: 12px;
 }
 
-/* ---- Base layer ---- */
+/* ---- base layer ---- */
 @layer base {
   * { @apply border-border; }
   body { @apply bg-background text-foreground; }
-  /* нежный фон как в фигме */
   body {
     background-image:
       radial-gradient(1200px 600px at 20% 0%, #e8efff 0%, transparent 60%),
@@ -64,7 +63,6 @@
   }
 }
 
-/* Smooth theme switch across the whole app */
 html.theme-transition * {
   transition:
     color .35s ease,
@@ -75,14 +73,12 @@ html.theme-transition * {
     box-shadow .35s ease;
 }
 
-/* Уважать настройку пользователя: без анимаций при Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   html.theme-transition * {
     transition: none !important;
   }
 }
 
-/* === Theme ripple overlay (radial wave) === */
 .theme-ripple{
   position: fixed;
   inset: 0;
