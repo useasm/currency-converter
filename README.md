@@ -32,7 +32,7 @@ It supports **theme switching (light/dark)**, **smooth UI interactions**, and **
 
 | Category | Technology |
 |-----------|-------------|
-| **Frontend Framework** | [React 18+](https://react.dev/) |
+| **Frontend Framework** | [React](https://react.dev/) |
 | **UI Framework** | [Tailwind CSS](https://tailwindcss.com/) |
 | **Desing** | [Figma](https://www.figma.com) |
 | **Language** | [TypeScript](https://www.typescriptlang.org/) |
