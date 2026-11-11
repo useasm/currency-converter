@@ -10,6 +10,7 @@ Built with React, TypeScript, Vite and Tailwind CSS.
 - Last used amount and currencies are saved in local storage
 - Swap currencies in one click, click the result to copy it
 - Works on desktop and mobile
+<img width="2010" height="1212" alt="1" src="https://github.com/user-attachments/assets/f3b4b32d-0ba1-40b1-9372-a9903228ad94" />
 
 ## Exchange rates
 
