@@ -32,7 +32,7 @@ It supports **theme switching (light/dark)**, **smooth UI interactions**, and **
 
 | Category | Technology |
 |-----------|-------------|
-| **Frontend Framework** | [React 18+](https://react.dev/) |
+| **Frontend Framework** | [React](https://react.dev/) |
 | **UI Framework** | [Tailwind CSS](https://tailwindcss.com/) |
 | **Desing** | [Figma](https://www.figma.com) |
 | **Language** | [TypeScript](https://www.typescriptlang.org/) |
@@ -48,5 +48,25 @@ It supports **theme switching (light/dark)**, **smooth UI interactions**, and **
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/useasm/currency-converter.git
+git clone https://github.com/YOUR-USERNAME/currency-converter.git
 cd currency-converter
+```
+
+### 2️⃣ Install Dependencies
+```bash
+pnpm install
+# or
+npm install
+# or
+yarn
+```
+
+### 3️⃣ Run the Development Server
+```bash
+pnpm dev
+# or
+npm run dev
+```
+
+Then open your browser and go to:
+👉 [http://localhost:5173](http://localhost:5173/)
