@@ -6,20 +6,20 @@ function FooterBase() {
 <footer
   className="
     mt-12
-    bg-white/70 dark:bg-neutral-900/60  /* полупрозрачный фон */
+    bg-white/70 dark:bg-neutral-900/60  
     text-black dark:text-neutral-100
     border border-black/10 dark:border-white/10
-    backdrop-blur-md                   /* стеклянный эффект */
+    backdrop-blur-md                   
     supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-900/50
     shadow-[0_-2px_12px_rgba(0,0,0,0.12)]
-    transition-colors transition-background duration-300 /* мягкая смена темы */
+    transition-colors transition-background duration-300 
   "
 >
       <div className="mx-auto max-w-6xl px-6 py-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="text-xl font-extrabold uppercase tracking-wide mb-4">
-              About Me
+              About Project
             </h3>
             <p className="leading-relaxed text-lg">
             This small web page was created by ME using React.js. It provides real-time currency conversion rates fetched from a public API.
@@ -44,7 +44,7 @@ function FooterBase() {
               Info
             </h3>
             <ul className="space-y-3 text-lg">
-              <li>made on 09.11.2025</li>
+              <li>made on ~ 11.2025</li>
               <li>create for university</li>
             </ul>
           </div>
