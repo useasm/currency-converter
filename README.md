@@ -1,7 +1,6 @@
 # Currency Converter
 
 A small web app for converting currencies with live exchange rates. Made as a university project.
-
 Built with React, TypeScript, Vite and Tailwind CSS.
 
 ## Features
@@ -11,8 +10,6 @@ Built with React, TypeScript, Vite and Tailwind CSS.
 - Last used amount and currencies are saved in local storage
 - Swap currencies in one click, click the result to copy it
 - Works on desktop and mobile
-
-<img width="1930" height="1060" alt="asd1" src="https://github.com/user-attachments/assets/c09486ee-57f0-48fb-976a-91fe3237503e" />
 
 ## Exchange rates
 
