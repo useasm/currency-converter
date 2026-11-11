@@ -5,9 +5,13 @@ import { Button } from './components/ui/button'
 import Footer from './components/Footer'
 
 function getInitialTheme(): boolean {
-  const saved = localStorage.getItem('theme')
-  if (saved === 'dark') return true
-  if (saved === 'light') return false
+  try {
+    const saved = localStorage.getItem('theme')
+    if (saved === 'dark') return true
+    if (saved === 'light') return false
+  } catch {
+    // storage unavailable
+  }
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false
 }
 
@@ -16,14 +20,16 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode)
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light')
+    try {
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light')
+    } catch {
+      // storage unavailable
+    }
   }, [isDarkMode])
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
-      {/* MAIN */}
       <main className="flex-1 mx-auto w-full max-w-4xl px-4 py-10 animate-fade-in">
-        {/* HEADER */}
         <header className="mb-10 flex items-center justify-between animate-slide-up">
           <div className="animate-scale-in">
             <h1 className="text-3xl font-bold text-foreground">Currency Converter</h1>
@@ -43,13 +49,11 @@ export default function App() {
           </Button>
         </header>
 
-        {/* MAIN CONTENT */}
         <section className="animate-slide-up motion-safe:[animation-delay:100ms]">
           <CurrencyConverter />
         </section>
       </main>
 
-      {/* FOOTER */}
       <Footer />
     </div>
   )

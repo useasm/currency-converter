@@ -1,20 +1,9 @@
 import { memo } from 'react'
-import { FaGithub, FaTelegram, FaDiscord, FaInstagram } from 'react-icons/fa'
+import { FaGithub, FaTelegram } from 'react-icons/fa'
 
 function FooterBase() {
   return (
-<footer
-  className="
-    mt-12
-    bg-white/70 dark:bg-neutral-900/60  
-    text-black dark:text-neutral-100
-    border border-black/10 dark:border-white/10
-    backdrop-blur-md                   
-    supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-900/50
-    shadow-[0_-2px_12px_rgba(0,0,0,0.12)]
-    transition-colors transition-background duration-300 
-  "
->
+    <footer className="mt-12 border border-black/10 bg-white/70 text-black shadow-[0_-2px_12px_rgba(0,0,0,0.12)] backdrop-blur-md transition-colors duration-300 supports-[backdrop-filter]:bg-white/60 dark:border-white/10 dark:bg-neutral-900/60 dark:text-neutral-100 dark:supports-[backdrop-filter]:bg-neutral-900/50">
       <div className="mx-auto max-w-6xl px-6 py-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -32,7 +21,6 @@ function FooterBase() {
             </h3>
             <ul className="space-y-3 text-lg">
               <li>React.js</li>
-              <li>Java Script</li>
               <li>Tailwind</li>
               <li>CSS</li>
               <li>Figma (for UI/UX)</li>
@@ -71,24 +59,6 @@ function FooterBase() {
               >
                 <FaTelegram className="h-6 w-6 text-[#229ED9]" />
                 <span className="text-[#229ED9] dark:text-[#3ab4e8]">Telegram</span>
-              </a>
-              <a
-                href=""
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center gap-3 text-lg font-medium hover:opacity-90"
-              >
-                <FaDiscord className="h-6 w-6 text-[#5865F2]" />
-                <span className="text-[#5865F2]">Discord</span>
-              </a>
-              <a
-                href=""
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center gap-3 text-lg font-medium hover:opacity-90"
-              >
-                <FaInstagram className="h-6 w-6 text-[#E1306C]" />
-                <span className="text-[#E1306C]">Instagram</span>
               </a>
             </nav>
           </div>
