@@ -48,7 +48,7 @@ It supports **theme switching (light/dark)**, **smooth UI interactions**, and **
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/useasm/currency-converter.git
+git clone https://github.com/YOUR-USERNAME/currency-converter.git
 cd currency-converter
 ```
 
