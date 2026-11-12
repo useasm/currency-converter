@@ -32,7 +32,7 @@ Built with React, TypeScript, Vite and Tailwind CSS.
 ## Running locally
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/currency-converter.git
+git clone https://github.com/useasm/currency-converter.git
 cd currency-converter
 pnpm install
 pnpm dev
